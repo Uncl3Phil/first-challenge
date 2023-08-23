@@ -17,7 +17,42 @@
     <link href="dist/output.css" rel="stylesheet" />
 
     <!-- js -->
-    <script src="src/scripts.js" defer></script>
+    <script src="scripts.js" defer></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,typography,aspect-ratio,line-clamp"></script>
+
+    <script>
+      tailwind.config = {
+        theme: {
+          container: {
+            center: true,
+            padding: {
+              DEFAULT: "1rem",
+              "2xl": "2rem",
+            },
+          },
+
+          extend: {
+            fontFamily: {
+              roboto: ["Roboto", "sans-serif"],
+            },
+
+            screens: {
+              laptop: { max: "1440px" },
+              tablet: { max: "1024px" },
+              mobile: { max: "850px" },
+            },
+
+            colors: {
+              primary: "hsl(4, 100%, 67%)",
+              darkGrey: "hsl(234, 29%, 20%)",
+              mediumGrey: "hsl(235, 18%, 26%)",
+              grey: "hsl(231, 7%, 60%)",
+            },
+          },
+        },
+      };
+    </script>
 
     <!-- favicon -->
     <link
@@ -31,7 +66,7 @@
     class="font-roboto text-darkGrey h-screen bg-mediumGrey flex justify-center items-center"
   >
     <section
-    id="main-content"
+      id="main-content"
       aria-labelledby="updated"
       class="bg-white rounded-[30px] items-center mobile:rounded-none"
     >
@@ -100,9 +135,11 @@
             </button>
           </div>
         </div>
-        <div
+        <!-- <div
           class="bg-[url('../images/desktop.svg')] w-[400px] h-[650px] bg-cover bg-no-repeat bg-center mobile:bg-[url('../images/mobile.svg')] mobile:w-[360px] mobile:h-[273px]"
-        ></div>
+        ></div> -->
+        <img class="w-full block mobile:hidden" src="images/desktop.svg" alt="desktop">
+        <img class="w-full mobile:block hidden" src="images/mobile.svg" alt="mobile">
       </div>
     </section>
   </body>
@@ -113,11 +150,7 @@
       class="bg-white rounded-[40px] px-16 py-14 flex flex-col gap-9 justify-center max-w-[55ch] mobile:h-screen mobile:py-0 mobile:px-4 mobile:rounded-none mobile:justify-around"
     >
       <div class="flex flex-col gap-9">
-        <img
-          src="images/icon-success.svg"
-          class="max-w-[60px]"
-          alt="success"
-        />
+        <img src="images/icon-success.svg" class="max-w-[60px]" alt="success" />
         <h1 id="modal" class="text-6xl font-bold mobile:text-4xl">
           Thanks for subscribing!
         </h1>
@@ -127,7 +160,8 @@
           click the button inside to confirm you&nbsp;subscription.
         </p>
       </div>
-      <button onclick="reloadPage()"
+      <button
+        onclick="reloadPage()"
         class="w-full bg-darkGrey text-white font-bold tracking-wide rounded-lg text-center py-4 duration-300 hover:bg-gradient-to-l hover:from-primary from-[20%] hover:to-[#ff5379] hover:shadow-[0px_10px_10px_-5px_rgba(255,94,88,1)] mobile:py-4 mobile:text-sm"
       >
         Dismiss message
